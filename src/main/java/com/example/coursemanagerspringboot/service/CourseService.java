@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class CourseService {
 
     private final Helper helper;
+    @SuppressWarnings("unused")
     private final String defaultCourseTitle;
 
     @Autowired
