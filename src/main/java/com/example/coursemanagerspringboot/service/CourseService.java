@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 public class CourseService {
 
     private final Helper helper;
-    @SuppressWarnings("unused")
     private final String defaultCourseTitle;
 
     @Autowired
@@ -23,7 +22,7 @@ public class CourseService {
 
         // Initialize with two default courses
         courseList.add(new Course(1L, helper.formatCourseName("java"), "dummy"));
-        courseList.add(new Course(2L, helper.formatCourseName(defaultCourseTitle), "dummy"));
+        courseList.add(new Course(2L, helper.formatCourseName(this.defaultCourseTitle), "dummy"));
     }
 
     private final List<Course> courseList = new ArrayList<>(); // Data Storing
