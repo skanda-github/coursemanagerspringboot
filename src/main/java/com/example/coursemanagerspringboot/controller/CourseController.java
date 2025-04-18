@@ -3,6 +3,7 @@ package com.example.coursemanagerspringboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.coursemanagerspringboot.model.Course;
@@ -40,12 +41,16 @@ public class CourseController {
     }
 
     @DeleteMapping("/{id}")  // DELETE /api/courses/{id}
+    @ResponseStatus(HttpStatus.OK)
     public String deleteCourse(@PathVariable Long id){
         return this.courseService.deleteCourse(id) ? "Deleted successfully." : "Course not found.";
     }
 
     @GetMapping("/search")  // Search for a course by name
-    public List<Course> searchCoursesByName(@RequestParam String name){
-        return this.courseService.searchByName(name);
+    public List<Course> searchCoursesByName(@RequestParam(required = false) String name){
+        if (name == null || name.isBlank()) {
+            return courseService.getAllCourses();
+        }
+        return courseService.searchByName(name);
     }
 }
