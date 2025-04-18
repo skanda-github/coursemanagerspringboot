@@ -1,0 +1,44 @@
+### 1. Get All Courses
+GET http://localhost:8085/api/courses
+Accept: application/json
+
+###
+
+### 2. Add a New Course
+POST http://localhost:8085/api/courses
+Content-Type: application/json
+
+{
+  "id": "101",
+  "name": "Spring Boot Basics",
+  "description": "Introductory course to Spring Boot"
+}
+
+###
+
+### 3. Get Course by ID
+GET http://localhost:8085/api/courses/101
+Accept: application/json
+
+###
+
+### 4. Update Existing Course
+PUT http://localhost:8085/api/courses/101
+Content-Type: application/json
+
+{
+  "id": "101",
+  "name": "Spring Boot Updated",
+  "description": "Updated course on Spring Boot"
+}
+
+###
+
+### 5. Delete Course by ID
+DELETE http://localhost:8085/api/courses/101
+
+###
+
+### 6. Search Course by Name
+GET http://localhost:8085/api/courses/search?name=Spring
+Accept: application/json
